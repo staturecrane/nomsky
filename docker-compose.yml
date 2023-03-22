@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  base:
+    build: "."
+    volumes:
+      - ./:/app
+    entrypoint: /bin/bash
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
